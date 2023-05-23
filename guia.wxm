@@ -1,0 +1,387 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 01  (Curso 2022-2023)
+ENTROPÍA Y CANTIDAD DE INFORMACIÓN (semana del 20 de febrero de 2023)
+
+FICHERO DE AYUDA PARA LA REALIZACIÓN DE LA PRÁCTICA
+
+Compilado con la versión wxMaxima 22.04.0.
+Fichero de instalación: maxima-5.46.0-win64.exe.
+Última modificación: 14 de abril de 2022.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ordenes simples/múltiples + Operaciones con números + Asignación de valores
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+3+4 ;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+3+4 $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+%o2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[ 3+4 , 3*4 , 2/4 , 2^4 ];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+( pepe:3 , 2^3 );
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+pepe+1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Números decimales + Última salida + float + log + sqrt
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+4/6;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+%e^(log(5));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float( [log(5),sqrt(17),17^(1/2)] );
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Listas + length + makelist + sum
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lista:[3,2,2,1,1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lista[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+length(lista);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+1/lista;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist(i^2,i,1,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(i^2,i,1,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Cadenas/Strings + charat + slength + sposition + charlist + sprint
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+s: "abf r12r";
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+charat(s,1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+slength(s);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sposition("r",s);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist(charat(s,i),i,1,slength(s));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+charlist(s);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+s:"La casa de la
+pradera.";
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sprint(s);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sprint(s) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Bucles + print + evenp
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:2 thru 10 do i;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:2 thru 10 do print(i);   
+     /* función print */;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:0 $
+for i thru 10 do (a:a+i,print(a));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+evenp(2);               /* función evenp */;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i thru 10 do 
+    if evenp(i) then print(i) else 
+    print(i,"no es par");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Construcción de nuevas funciones: programación con maxima + kill(all) + block + return
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+suma(x,y) := x+y;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+suma(1,2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+incrementa(x) := [x+1,x+2] $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+incrementa(3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+pepe() := (juan:1,juan+2) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+pepe();
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+juan;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);      /* orden para borrar todas las 
+              funciones y variables definidas */;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+pepe() := block(    /* orden block 
+                  (variables locales) */ 
+    [juan:1],
+    juan+2
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+pepe();
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+juan;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+UN EJEMPLO DE FUNCIÓN MÁS COMPLEJA.
+lposition(s,L)
+Función que determina si la expresión s es uno de los elementos de la lista L, y devuelve la primera posición en la que aparece (similar al comando sposition pero trabajando con listas).
+Primer argumento: la expresión s.
+Segundo argumento: la lista L.
+Devuelve la primera posición de s en la lista L, cuando s es un elemento de L, y devuelve la cadena "false" en
+caso contrario.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sposition("a","bbaaa");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sposition("c","bbaaa");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lposition(s,L):=block(
+    [sol:"false"],
+    for i thru length(L) do if s=L[i] then return(sol:i),
+    sol
+    )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lposition(1 , [2,"b","c",1,"a",5]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lposition(1 , [2,"b","c",1,"a",5,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lposition("d" , [2,"b","c",1,"a",5,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Gráficos en dos dimensiones: wxplot2d + paquete draw + draw2d
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Gráfica de una función.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(x^2,[x,-2,2]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x):= log(x)/log(2);
+wxplot2d(f(x),[x,0.01,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Gráfica conjunta de funciones.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([x^2,x^3],[x,-1,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Gráfica conjunta de funciones y puntos.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([x^2,[discrete,[0],[0]]],[x,-2,2],[style,lines,points]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([x^2,[discrete,[0],[0]]],[x,-2,2],[style,lines,points],[legend,"función","mínimo"],[xlabel,"eje de x"],[ylabel,"eje de y"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Otra forma de hacerlo: usando el paquete draw.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(draw)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+draw2d(
+explicit(x^2,x,-2,2),
+color=green,
+line_width=2,
+implicit(2*y=1,x,-2,2,y,0,4),
+color=red,
+point_type=7,
+point_size=8,
+points([[0,0]]),
+color=orange,
+point_type=7,
+point_size=4,
+points([[1,1],[-1,1]])
+);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

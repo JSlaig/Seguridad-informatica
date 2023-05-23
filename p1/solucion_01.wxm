@@ -1,0 +1,172 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 01  (Curso 2022-2023)
+ENTROPÍA Y CANTIDAD DE INFORMACIÓN (semana del 20 de febrero de 2023)
+
+FICHERO SOLUCIÓN DE LA PRÁCTICA
+
+Compilado con la versión wxMaxima 22.04.0.
+Fichero de instalación: maxima-5.46.0-win64.exe.
+Última modificación: 14 de abril de 2022.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entropia_binaria(p):=(p*log(1/p)+(1-p)*log(1/(1-p)))/log(2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(entropia_binaria(p),[p,0,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([entropia_binaria,[discrete,[1/2],[1]]],[x,0,1],[style,lines,points],[legend,"función entropía binaria","máximo"],[xlabel,"probabilidad"],[ylabel,"entropía"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entropia_ternaria(p):=(2*p*log(1/p)+(1-2*p)*log(1/(1-2*p)))/log(2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(entropia_ternaria(p),[p,0,1/2]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([entropia_ternaria,[discrete,[1/3],[entropia_ternaria(1/3)]]],[x,0,1/2],[style,lines,points],[legend,false],[xlabel,"probabilidad"],[ylabel,"entropía"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[ float(entropia_ternaria(1/3)) , float(log(3)/log(2)) ];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+entropia(p)
+Función para calcular la entropia (medida en bits). 
+Argumento: la lista de probabilidades (también válido para frecuencias). 
+Devuelve el valor no aproximado.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entropia(p) := block
+(
+    [m:length(p),total],
+    total:sum(p[i],i,1,m),
+    1/log(2)*sum(p[i]/total*log(total/p[i]),i,1,m)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entropia(makelist(1,i,1,20));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+EJERCICIO 4
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alf:" eaolsndruitcpmyq.,bhgfvjñz;x:kw"$
+frecuencias:[19171,16782,11962,8693,8372,7885,7011,6877,4942,4804,
+    4156,3319,2922,2763,2128,1547,1539,1137,989,921,890,734,520,393,
+    301,290,156,68,65,17,15,14]$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(entropia(frecuencias));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+cantidad(msj,alf,p). 
+Función para calcular la cantidad de información en bits de un mensaje msj emitido por una fuente de información con alfabeto alf y probabilidades descritas en p.  
+
+Primer argumento: un string con el mensaje. 
+Segundo argumento: un string con el alfabeto fuente. 
+Tercer argumento: una lista de probabilidades o de frecuencias absolutas de los símbolos de la fuente. 
+Si el mensaje msj está emitido por la fuente, la función devuelve su cantidad de información, medida en bits y sin aproximar. En caso contrario, la función devuelve la cadena "false".
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cantidad(msj,alf,p):=block              
+(
+[m:length(p),total,prob,sol:0,simbolo,pos],
+total:sum(p[i],i,1,m),
+prob:1/total*p,
+    for i:1 thru slength(msj) do
+    (
+        simbolo:charat(msj,i),
+        pos:sposition(simbolo,alf),
+        if(pos=false) then 
+           (
+            sprint("
+                El mensaje que se quiere medir no ha sido emitido por la fuente. Algún
+                símbolo del mensaje no se encuentra en el alfabeto."),
+            return(sol:"false")
+           )
+        else sol:sol+1/log(2)*log(1/prob[pos])
+    ),
+sol
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mensaje:"el señor de los anillos"$
+float(cantidad(mensaje,alf,frecuencias));
+H:entropia(frecuencias)$
+float(H*slength(mensaje));
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mensaje:"secreto de uno, secreto seguro"$
+float(cantidad(mensaje,alf,frecuencias));
+H:entropia(frecuencias)$
+float(H*slength(mensaje));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mensaje:"1 Ahora no va a funcionar"$
+cantidad(mensaje,alf,frecuencias);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
