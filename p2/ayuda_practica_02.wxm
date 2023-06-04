@@ -1,0 +1,151 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 02  (Curso 2022-2023)
+FUENTE DE INFORMACIÓN ASOCIADA A UN TEXTO (semana del 27 de febrero de 2023)
+
+FICHERO DE AYUDA PARA LA REALIZACIÓN DE LA PRÁCTICA
+
+Compilado con la versión wxMaxima 22.04.0.
+Fichero de instalación: maxima-5.46.0-win64.exe.
+Última modificación: 14 de abril de 2022.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Comandos útiles para el PRIMER EJERCICIO.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Supongamos que queremos sacar la fuente de información asociada al texto "aaba".
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alf:"";
+frec:[];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Leemos el primer símbolo del texto.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+símbolo:charat("aaba",1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sposition(símbolo,alf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alf:concat(alf,símbolo);
+frec:endcons(1,frec);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Leemos el segundo símbolo del texto.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+símbolo:charat("aaba",2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+r:sposition(símbolo,alf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+frec[r]:frec[r]+1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[alf,frec];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Leemos el tercer símbolo del texto.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+símbolo:charat("aaba",3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+r:sposition(símbolo,alf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alf:concat(alf,símbolo);
+frec:endcons(1,frec);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Leemos el cuarto símbolo del texto.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+símbolo:charat("aaba",4);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+r:sposition(símbolo,alf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+frec[r]:frec[r]+1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[alf,frec];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+slength("aaba");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Comandos útiles para el SEGUNDO EJERCICIO.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+batchload("entrada_datos_02.txt");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+texto;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sprint(texto) $
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

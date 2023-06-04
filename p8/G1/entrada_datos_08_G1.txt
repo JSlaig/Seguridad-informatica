@@ -1,0 +1,64 @@
+alf:
+"abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRS
+TUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:!¡-¿?()";
+
+/*PROBLEMA 1*/
+
+clave:
+"IMMANUEL KANT";
+
+texto_cifrado_1:
+"8MópR2SWjÑRN2xPX
+óYtOazAXÓYBMpúttV?éMáKÁBVACÉSé TIPTLaPSÁrQAjáA1TLMópOÚQAjKLCVSMíIPUHAgóECTéXBLNLYSiíACÁeóaCáÉeWÚVOCÚéPOECÉIWeépí4MBáEóWMM?ápWTxO
+FQ2IW.RACWMBóIbUOQezPQ1áPXEOYtLazTYÓxZBACÁEAeíRNM¿K37pl12pzí6K81B72qi:Ú¡7ñ.?93ZDL1VbKNÉXSB,AY4uAáwiwPozrkM";
+
+
+/*USUARIOS DE RSA*/
+
+/*Clave pública de Benito*/
+
+n_B:7119847177516178682615079;
+e_B:7654541110992431640625;
+
+/*Clave pública de Pepa*/
+
+n_P:82788920702214745052711;
+e_P:291062977435155133;
+
+/*Clave pública de Juan*/
+
+n_J:962661868537613318993;
+e_J:5791676632597;
+
+/*Clave pública de María*/
+
+n_M:612306857217384579898239197;
+e_M:557890978040851;
+
+
+/*PROBLEMA 2*/
+
+
+texto_cifrado_2:"xY0)5ÁqSt¿e3TBv-R-Cñt ñóÓP:úvMGNP2v::SKOM0FÑF kÓjñGAJÍ9wxéWÚ¿¡aABsEÓ hBí!Óz!HFúAXXNvj:X.Úja8j-SéMÍBubÚyhau?sSm-Nb)SYqyÓNh
+P:aLmcéuXgCT33k :5e¡Ea,M!VcuíL2ÚC8W7éPHÉúM,í..mKP¿F)wBKHDJuRdHÚEVéOIn7?iPgdÚ5Híp8Á,áógíáL,É7cyW6QTII)gdú(z9C5BÁuPéR(yÓÚIfvS!¡XEs7xse)ishGk31-:Ó8h6L4aKzxT-E0ú!o,k7óvLM1a.HóCJ8QyLjQPp(!óMjp!ézórÉÓ:XX3G-";
+
+
+/*PROBLEMA 3*/
+
+par_cifrado:
+["F?3,()Yui¡¿BéMvZú¡4kKyvp.nS6A áLJñÉ3xyOxyJhVIbctxSz:p(4yú7hMQc9u0lcixÉhuFN9B4","QICZL9Z?úñqUOÚÑIiESvUPRR(a
+DkRsV CoE iD:¿5hé(p6Z)4S(GQÚCYP úFqTSiAA.GOK2EÓOdÚJBMÁiIdv Cukej!á:¡4)¡ÁA3hcUNILYEiVéBéthYJ ttÚÍtUL0?UrAó UoJ oeqeg )dé5)é-50¡RWáúE7E ÍOSUG?kpaCtXíO1Ek yrw2ÚYoDbDe-K¡h4:óéG2Z74m!:ÁVpíZfV3aHEÚNRkáEWLORp: 
+zwRfZsrnoo-z,iá!)2i,0)ZajEYÑ9áOiIóJóW ÑAirISLORp: Xoi4!Xrr oeqe,i69:bkíZ!0c(t
+SXñúkVE
+UtfLR!áGGLPUNfiyoi2 IcvbDa¿eg!(dé2ñLZ.,)kEYhAOSi1SqÉEiYr"];
+
+
+
+
+sprint("En la variable alf está almacenado el alfabeto.
+En la variable clave está almacenada la clave de Vigenère del Problema 1.
+En la variable texto_cifrado_1 está almacenado el mensaje cifrado del Problema 1.
+En las variables n_B,e_B,n_P,e_P,n_J,e_J,n_M,e_M están las claves públicas de los usuarios de RSA.
+En la variable texto_cifrado_2 está almacenado el mensaje cifrado del Problema 2.
+En la variable par_cifrado está almacenado el par cifrado del Problema 3.");
+

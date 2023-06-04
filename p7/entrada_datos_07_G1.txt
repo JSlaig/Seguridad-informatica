@@ -1,0 +1,49 @@
+
+alf:"aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFG
+HIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:;-()¿?";
+
+
+clave_cif_1:matrix(
+		[50,	25,	0,	81,	4],
+		[10,	39,	19,	67,	51],
+		[34,	49,	63,	9,	56],
+		[31,	21,	33,	55,	6],
+		[82,	69,	34,	48,	1]
+	);
+
+
+clave_cif_2:[matrix(
+		[68,	57,	3,	29,	46,	35],
+		[30,	52,	26,	80,	44,	12],
+		[37,	23,	53,	60,	16,	57],
+		[71,	16,	82,	74,	46,	54],
+		[31,	56,	83,	72,	35,	37],
+		[12,	11,	68,	55,	22,	19]
+	),matrix(
+		[24,	11,	1,	34,	70,	78]
+	)];
+
+
+texto_cifrado_1:
+"emyXcÑ-7xS.oáAk)G;O5YjIVKevi:RtlgFD8ax XdpéaoÚFñ0QxÉJ3PÁJ2O;gJ4ízzó?0zBÓpNúYTkóp9P)9nY?y:fv8iv6,1YÍvLPxyXk
+D2ÍmM0áÑaiUq:tÍ(t;?mc:8ÑbMsNR1uócCrpnU¿K
+rl owÍ.áfLÉÚIÑÉÁql.UgoVdÍsug39ZÍlZcxSM4TK
+ííÓ,óñU)mÓGICóLkcóe81(EdomZO6gGÑF0wUa:vZoÚÉbECupB1J0CKxKÓT)CzIR4,xóuDbn;QxjJVpH:ERÁÚaVí
+IÍ;úlFQjQlLE(WZfvPA7-ÁQ8éÓJÑnqIBxzBtKpuGM)Fh¿7oróñNs0;(AéW6jWxuNmTnjsaD25ÉBh5QB.F ÉHf(HM:6ÚagRQsAzqÓp K)ÑFUFTshX3K.bxCvsF(2aBRkXÉBkdj¿9n6á9ñxfNnÑ5FmQo-, béaVTF4áÉfsIÑ2O9RMJpC svJa¿c-QgÁ4tfAw4FE?9BÑFvTwiSCBsEi4SarTup ÚH4xIí";
+
+
+
+texto_cifrado_2:
+"áYteqÉ2V¿rLqNíÑKziCÍZ.Zg.1pZS5HVXE76k7WKx2.ÑÍevaCOñÑ;EEbZ(NCGKp,(vg:.4ZK1éoJ¿Dp(é:D1Bwx,yLx4mtEtÍqErz.(UZ;Iofú9fíúP¿iIÚUívG?3W5ávÑ9XyviV18ód8ej3
+Kr(gCF5ÍQoC¿ 
+W-Qhz:idXVL0(CDYwFÁka 0mÑÓicrN7BUtbñLyÓ?RI9MT?yÓmx)T,H9:áCñd  -SYñ8kltgíE.TcE5D:¿esw-5)P?éLzgWEXúP:húXm
+FZúÉX3YiRmED
+didjX9Z:9wI,d¿X;wbmájfa,ÓfF-Bb6yK;aemñwjX9 (2aO ZcjlícP
+??ÉKeÉCAúI-RÚ0z-útiAIL";
+
+sprint("En la variable alf está almacenado el alfabeto.
+En la variable clave_cif_1 está almacenada la matriz usada para cifrar con Hill.
+En la variable clave_cif_2 está almacenada la lista con la clave para el cifrado afín,
+los dos datos de esta clave están descritos como matrices.
+En la variable texto_cifrado_1 está almacenado el mensaje cifrado del Problema 1.
+En la variable texto_cifrado_2 está almacenado el mensaje cifrado del Problema 2.");

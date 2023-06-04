@@ -1,0 +1,117 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 03  (Curso 2022-2023)
+CODIFICACIONES ÓPTIMAS BINARIAS (semana del 6 de marzo de 2023)
+
+FICHERO DE AYUDA PARA LA REALIZACIÓN DE LA PRÁCTICA
+
+Compilado con la versión wxMaxima 22.04.0.
+Fichero de instalación: maxima-5.46.0-win64.exe.
+Última modificación: 14 de abril de 2022.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: hide output   ] *//* [wxMaxima: comment start ]
+Comandos útiles para el PRIMER EJERCICIO.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+L:["ab","abc"] $
+L[2];
+slength(L[2]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Comandos útiles para el SEGUNDO EJERCICIO.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+L:[4,5,7,2] $
+makelist(L[i]^2,i,1,length(L));
+makelist(i^2,i,L);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+L1:[1,2,3];
+L2:[4,5,6];
+create_list(i*j,i,L1,j,L2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+charlist("Hola");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+simplode(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+concat("medi","terráneo");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+print("La lista 1 es: ",L1,"   La lista dos es: ",L2) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Comandos útiles para el TERCER EJERCICIO.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+L:[1,2,3] $
+endcons(4,L);
+append(L,[4]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+append([1,"a"],[5,sqrt(7),"ab"]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: hide output   ] *//* [wxMaxima: comment start ]
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Grafica de puntos.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+L1:[1,2,3] $
+L2:[3,2,1]$
+L3:[2,1,3]$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(
+        [[discrete,L1,L2],[discrete,L1,L3]],
+        [x,1,3],
+        [style,[points,4],[points,4]],
+        [point_type,box,bullet],
+        [color,blue,red],
+        [legend,false],
+        [xlabel,"eje x"],[ylabel,"eje y"],
+        [title,"Gráfica de puntos"]
+        );
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

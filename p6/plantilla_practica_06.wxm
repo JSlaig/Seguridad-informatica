@@ -1,0 +1,111 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 06  (Curso 2022-2023)
+SUSTITUCIÓN MONOALFABÉTICA (semana del 10 de abril de marzo de 2023)
+
+
+Compilado con la versión wxMaxima 22.04.0.
+Fichero de instalación: maxima-5.46.0-win64.exe.
+Última modificación: 14 de abril de 2022.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+codi_numerica(alf,msj)
+Función que realiza la codificación numérica al argumento msj, identificando cada símbolo del alfabeto alf con su posición en el alfabeto menos uno.
+
+Primer argumento: un string con el alfabeto.
+Segundo argumento: puede ser un string con el mensaje o una lista con la codificación numérica del mensaje.
+
+Si msj es un string, devuelve una lista con la codificación numérica del mensaje. Si msj es una lista, devuelve un string del mensaje con codificación numérica los datos de la lista.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+codi_numerica(alf,msj):=block(
+    [sol],
+    if stringp(msj) then sol:makelist( sposition(charat(msj,i),alf)-1 ,i,1,slength(msj))
+        else 
+        (
+        sol:"",
+        for i in msj do sol:concat(sol,charat(alf,i+1))
+        ),
+    sol
+    )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+sustitucion(msj_num,clave,modulo)
+Función que aplica el cifrado de sustitución monoalfabética al mensaje numérico msj_num usando clave y haciendo las cuentas en el módulo indicado.
+
+Primer argumento: una lista con los datos del mensaje numérico.
+Segundo argumento: una lista con los dos datos de la clave.
+Tercer argumento: un número entero que indica el número de símbolos del alfabeto.
+
+Devuelve una lista con el mensaje numérico cifrado con clave.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sustitucion(msj_num,clave,modulo):=makelist( mod(clave[1]*i+clave[2],modulo) ,i,msj_num) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+cifrado(alf,msj,clave)
+Función que aplica el sistema criptográfico de clave privada descrito en el Problema 2 de la Práctica 06, para cifrar un mensaje msj escrito en el alfabeto alf, usando clave como clave inicial del sistema de cifrado.
+
+Primer argumento: un string con el alfabeto.
+Segundo argumento: un string con el mensaje que vamos a cifrar.
+Tercer argumento: una lista con los dos datos de la clave.
+
+Devuelve un string con el mensaje cifrado.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cifrado(alf,msj,clave):=block(
+    [modulo,control,msj_num,salida,linea,clave_cif],
+    modulo:slength(alf),
+    control:sposition("
+",alf)-1, 
+    /* en control se almacena la codificación numérica para el cambio de línea */
+    msj_num:codi_numerica(alf,msj), 
+    salida:[],
+    linea:1,
+    clave_cif:clave,
+    for dato in msj_num do
+        (
+        salida:endcons( mod(clave_cif[1]*dato+clave_cif[2],modulo) , salida ),
+        if dato=control then 
+            (
+            linea:linea+1, 
+            clave_cif: mod( [clave[1]^linea,clave[2]*linea] ,modulo)
+            ) 
+        ),
+    codi_numerica(alf,salida)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+DATOS DE LA PRÁCTICA
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+batchload("entrada_datos_06.txt") $
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

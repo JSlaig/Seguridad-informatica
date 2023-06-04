@@ -1,0 +1,242 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 21.05.2 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 05  (Curso 2022-2023)
+SIMULACIÓN DE UNA CODIFICACIÓN LINEAL SIN RUIDO  (semana del 27 de marzo de 2023)
+
+AYUDA PARA LA PRÁCTICA
+
+Compilado con la versión wxMaxima 22.04.0.
+Fichero de instalación: maxima-5.46.0-win64.exe.
+Última modificación: 14 de abril de 2022.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+DATOS DEL EJEMPLO
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alf:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+A:matrix([1,1,0],[1,0,1],[0,1,1],[1,1,1]);
+p:2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+MATRICES DEL CÓDIGO LINEAL
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tamaño: matrix_size(A);
+n: tamaño[1]+tamaño[2];
+k: tamaño[1];
+[ G:mat_unblocker(mod(matrix([ident(k),A]),p)) ,
+    H:mat_unblocker(mod(matrix([-transpose(A),ident(n-k)]),p)) ];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+TABLERO DE SÍNDROMES INCOMPLETO (para corregir)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+convert_base(n,b) 
+Función para obtener la expresión en base b del número natural n (sistema de numeración en base b). La función tiene dos argumentos.
+
+Primer argumento: el número natural n.
+Segundo argumento: la base b.
+
+Devuelve una lista con los dígitos de la expresión de n en base b.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+convert_base(n,b):=block(
+[result:[],l],
+    while n>=b do 
+        (
+        l:divide(n,b),
+        push(l[2],result),
+        n:l[1] 
+        ),
+    push(n,result),
+    result
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+convert_base(4,2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+peso(palabra) 
+Función para calcular el peso de una palabra (vector). La función tiene un argumento.
+
+Argumento: una lista con las coordenadas de la palabra.
+
+Devuelve el número de coordenadas no nulas de la palabra.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+peso(palabra):=block(
+    [w:0],
+    for i in palabra do if i # 0 then w:w+1,
+    w
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+peso([1,1,1,0,0]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+peso([3,2,0,1,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+tablero_sindromes(H,d,p) 
+Función que calcula el tablero de síndromes incompleto de un código lineal sobre F_p con matriz de control H y distancia de Hamming d. La función tiene tres argumentos.
+
+Primer argumento: una matriz de control del código.
+Segundo argumento: la distancia de Hamming del código.
+Tercer argumento: el número primo que marca el módulo.
+
+Devuelve una lista de listas. En cada una de ellas dos datos: el primero un error patrón (en formato lista) y el segundo su síndrome (en formato matriz).
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tablero_sindromes(H,d,p):=block( 
+[n,t,tablero:[],aux,ceros,extra],
+n:length(H[1]),   /* matrix_size(H)[2]  */
+t:floor((d-1)/2),
+tablero:[],
+    for i:0 thru p^n-1 do
+    ( 
+    aux:convert_base(i,p),  
+    if peso(aux)<=t then 
+      (
+        ceros:n-length(aux),
+        if ceros # 0 then for j:1 thru ceros do push(0,aux),
+        extra:[[ aux , mod(H.aux,p) ]], 
+        tablero:append(tablero,extra)
+      )
+    ),
+tablero
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+H;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+d:3 $
+tablero:tablero_sindromes(H,d,p);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+LISTA A CORREGIR Y DECODIFICAR
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+L:[1,0,1,1,0,0,1,1,0,1,0,0,1,0,1,1,1,1,0,0,0,0,1,1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+division:divide(length(L),n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+num:division[1];
+cola:division[2];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+y:makelist(L[i], i, 1 ,n);
+sindrome:mod(H.y,p);
+for dato in tablero do
+        (
+        if is(dato[2]=sindrome) then (corregida:mod(y-dato[1],p),break)
+        ) $
+corregida;
+decodi:makelist(corregida[i],i,1,k);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+y:makelist(L[i], i, n+1 ,2*n);
+sindrome:mod(H.y,p);
+for dato in tablero do
+        (
+        if is(dato[2]=sindrome) then (corregida:mod(y-dato[1],p),break)
+        ) $
+corregida;
+decodi:append(decodi,makelist(corregida[i],i,1,k));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+y:makelist(L[i], i, 2*n+1 ,3*n);
+sindrome:mod(H.y,p);
+for dato in tablero do
+        (
+        if is(dato[2]=sindrome) then (corregida:mod(y-dato[1],p),break)
+        ) $
+corregida;
+decodi:append(decodi,makelist(corregida[i],i,1,k));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+decodi:append(decodi,makelist(L[i],i,3*n+1,3*n+cola));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+DECODIFICACIÓN DE LA FUENTE
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alf;
+long:ceiling(log(slength(alf))/log(2));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[[1,0,0,1,1],[0,1,1,1,1],[1,0,0,1,1]] ;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[ 2^4+2+1 , 2^3+2^2+2+1 , 2^4+2+1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+concat(charat(alf,20), charat(alf,16), charat(alf,20));
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 21.05.2"$

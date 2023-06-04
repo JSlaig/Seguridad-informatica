@@ -1,0 +1,19 @@
+
+alf:
+"aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFG
+HIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:;-()";
+
+
+texto_cifrado_1:
+"ÁsHx9O9GíeO3xGíxQsx0TpsxGíxQO3xwuGxQsxJíTask9síGMsxpGx3sQ0sM3GxsxuíOx9T39OxG3x9uMTGípOkOx9sesípO4k1;PZd)Í)NxÉLxÉ)xnZáLÉx5qnÍáL4xiuQTsxfs0sMMO4xfsaTpsxGíxmhjRc";
+
+
+texto_cifrado_2:
+"nQx3GzOMxiOíG3NxgMOgTGesMTOxpGxQsx,Msílsx5síOMNxaGKkMMia:uMabKaRuá.QabuÁahKbbXRQMuÁ3a:QMuaQÁoKnKa4Q5KÁXKgjzZXÑZúú4)uZXJ4ú4XúY)Zúz4úX.FYXu4Ñé4XzYÉ4zZX4ÑTYúfZUPe ÉCuRGlhG8p É5C) GCehCe8jC;RCehCeoGlRXGhC;hGjhG; qqFQ26QCAqtQAQtNktQck2hHQFCQVANKt7QzFQ:2KNHQCAzQ3tNAzsReYx-AR-BgxfYR-YfRCxfRu-Cx-CcfZcé-ge-DAYcVW-ZRCW-áx
+mSzhSg:-.SÁ-D:zzBÁ-.S-Á:-7z:imAmB9:-x-iS-lOS-.SzSmRA-:LzoUcoúoPU(íq(,UBoU9íqcogoUzoU4,ní9oUHíq,4MX ó,Í,7T5Éí,Éí7:íuó:És:.íuF2)6Fíd)YFÓÓ.í(wmLh(wkmU";
+
+
+sprint("En la variable alf está almacenado el alfabeto de la práctica.
+En la variable texto_cifrado_1 está almacenado el texto cifrado del Problema 1.
+En la variable texto_cifrado_2 está almacenado el texto cifrado del Problema 2.");
+

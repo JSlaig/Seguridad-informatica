@@ -1,0 +1,52 @@
+
+alf:"aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFG
+HIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:;-()¿?";
+
+
+
+clave_cif_1:matrix(
+		[66,	24,	10,	53,	18,	82,	69,	34],
+		[50,	25,	0,	81,	4,	48,	1,	80],
+		[10,	39,	19,	67,	51,	28,	68,	57],
+		[34,	49,	63,	9,	56,	3,	29,	46],
+		[31,	21,	33,	55,	6,	35,	30,	52],
+		[26,	80,	44,	12,	37,	23,	53,	60],
+		[16,	57,	71,	16,	82,	74,	46,	54],
+		[31,	56,	83,	72,	35,	37,	12,	11]
+	);
+
+
+clave_cif_2:[matrix(
+		[68,	55,	22,	19,	24,	11,	43],
+		[1,	34,	70,	78,	23,	53,	17],
+		[33,	54,	0,	56,	13,	37,	3],
+		[83,	70,	74,	29,	34,	9,	41],
+		[40,	52,	66,	52,	16,	45,	9],
+		[84,	51,	19,	3,	55,	62,	67],
+		[14,	63,	55,	49,	75,	62,	13]
+	),matrix(
+		[18,	84,	45,	40,	52,	50,	11]
+	)];
+
+
+
+texto_cifrado_1:
+"HrYIJQt3í90Gs¿ÉK:fNi89DobRy0YZAOÉT1wEx
+qaéÉéÉUzU¿Ó18c6J3ÍGkóDmVBzoCZb?DEiGQuFÓ16c23aP
+iund68-3mQ?vUíhÚvgÍq¿Nú1íG,mAÓjiÚí9gówZ:JQlÍSK g:áx6KGqC 1Lá7ROg 1d4z.9:bvÁkefK(3ÍPrÚ8k69ñnB:EywGCgFA,éUeCO2EHíFLÍZOtK7N9tj0ZTGj.BiÓSSgRWqsmásuXDPTolCeH:xy7nY9l¿D";
+
+
+texto_cifrado_2:
+"Í;wYm?HálÚÍ,NjJoÓe,1AtBuz)ñy:áotbMeQTÉEVX(wÁyJ Qy6Éx6xwN?úb (ÁáÍaZqf6éA-We(2xÁKn(rpTí5ñRpDháRóc9hg6SmgO5yÑauóÍÁ8DuDuv¿FLz3iÉRtDS2ki6CICrÁuVbNTpY9b-cRc1RYi9E0.ADb3QÉc¿gfU Mx. oMX:-FsOQPXW¿ianÍ.Eé1WLcUhp1 -cH;gjga)éSKéBú,Y
+Ñ:uRMesG(He3Nm-úíDBOgw8psVYDTíwEq?A5wÍcZYcgÑéPPMQAxh
+mezAF0óHEbVÚ0BéCJ
+rWSw7IQ?5L AHUÓfmíMsÚñ(8,lX.L6AkÁALXrúmxÁ9h¿Dy(vQJoVr69MYWPiyK6ñ4v9SrZQ9NV?I¿,0Ót?7ÍwdósD,ÓÁUbDdÓl2j-XTvñOtR(gO:Áqkwau28HS59ÉÓwN¿6u;Hmé(:JUYqumOjM58óyTMXFúeV:NpCqqÚ0HímEyiS¿pLk-1:3XiQQo2uC¿FqXt8B24pa ,i;.qC áEHWGKn9RWKÚbw; t-H(1T-Or4ÓwÁXY59PZÉ3tK4bZ-éqJísVYDTíwÁqñHjSízOíT8D6Gz3pÍUD5zsdÑ?qmUwJsnÍVÚnL2íFÑWvoÓ3únLÚÉlRúÓ8:.frb";
+
+
+
+sprint("En la variable alf está almacenado el alfabeto.
+En la variable clave_cif_1 está almacenada la matriz usada para cifrar con Hill.
+En la variable clave_cif_2 está almacenada la lista con la clave para el cifrado afín,
+los dos datos de esta clave están descritos como matrices.
+En la variable texto_cifrado_1 está almacenado el mensaje cifrado del Problema 1.
+En la variable texto_cifrado_2 está almacenado el mensaje cifrado del Problema 2.");

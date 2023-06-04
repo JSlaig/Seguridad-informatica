@@ -1,0 +1,61 @@
+alf:
+"abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRS
+TUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:!¡-¿?()";
+
+/*PROBLEMA 1*/
+
+clave:
+"IMMANUEL KANT";
+
+texto_cifrado_1:
+"8MópR2SWjÑRN2xPX
+óYtOazAXÓYBMpúttV?éMáKÁBVACÉSé TIPTLaPSÁrQAjáA1TLMópOÚQAjKLCVSMíIPUHAgóECTéXBLNLYSiíACÁeóaCáÉeWÚVOCÚéPOECÉIWeépí4MBáEóWMM?ápWTxO
+FQ2IW.RACWMBóIbUOQezPQ1áPXEOYtLazTYÓxZBACÁEAeíRNM¿K37pl12pzí6K81B72qi:Ú¡7ñ.?93ZDL1VbKNÉXSB,AY4uAáwiwPozrkM";
+
+
+/*USUARIOS DE RSA*/
+
+/*Clave pública de Benito*/
+
+n_B:7119847177516178682615079;
+e_B:7654541110992431640625;
+
+/*Clave pública de Pepa*/
+
+n_P:82788920702214745052711;
+e_P:291062977435155133;
+
+/*Clave pública de Juan*/
+
+n_J:962661868537613318993;
+e_J:5791676632597;
+
+/*Clave pública de María*/
+
+n_M:612306857217384579898239197;
+e_M:557890978040851;
+
+
+/*PROBLEMA 2*/
+
+
+texto_cifrado_2:
+"KrPqvJ4Y)lynAJUz-Áf:eíronO¿JDí8vhJDñsgwyañó)yw(SÑ!wñ8ylDmÉewlx9L?Y qTb
+LB3U9W6O4I6wúzSVÉíánbcz.ÚADOIv0WAcj4OuKh9cMnAíkwqOXú-!úu6Uat5e-1Oo- vMnázx)AjTqf 3a
+8crfzIÍ-mKúINwáU¿DÓÍsó(?fCA3úF8éI,6áMOF7W4héSgSCraFFXxqMxXÉWlGJHLsñHt8-YPÑ¿YuFe)tÚÑ,JndíeSÁ8ygÉÁ7hÑQnhUWc7¿É-v¡1)bD)4CtéoHAuCÁWí(Q.ikhX,0SL6G7tgCHE:SpE7ú0bíCjbyÚ¿W9:NoN9";
+
+/*PROBLEMA 3*/
+
+par_cifrado:
+["x,0hñFiPÍ¡ñtTNJ9Q5w
+qÑEQj.ñ7:cñ)GC:,iÁÓLDJ)7L¡UAOXaYmIj6ef:m14D1(G!9wWLRn)hISó","JWHióeúdMcFoxsj0á¿!?-485:k!VDIC3áÚVYqÉM!AEcrIQL
+UD)j?rw2ÚVmsrmgkf0b1bb6iL0!ZbeVCTOáU!0EFótjONiKdSMtRU)lEÍRécUoi DezGf.5. 6i5¡éZ:ePáICYP íYPÚtcORlKSXÚVHQtcyÍÑÚ!ÚaE wa-tlia9é2gh0400!QCVLOO?ÚSs"];
+
+
+sprint("En la variable alf está almacenado el alfabeto.
+En la variable clave está almacenada la clave de Vigenère del Problema 1.
+En la variable texto_cifrado_1 está almacenado el mensaje cifrado del Problema 1.
+En las variables n_B,e_B,n_P,e_P,n_J,e_J,n_M,e_M están las claves públicas de los usuarios de RSA.
+En la variable texto_cifrado_2 está almacenado el mensaje cifrado del Problema 2.
+En la variable par_cifrado está almacenado el par cifrado del Problema 3.");
+
