@@ -1,0 +1,236 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 05  (Curso 2022-2023)
+SIMULACIÓN DE UNA CODIFICACIÓN LINEAL SIN RUIDO  (semana del 27 de marzo de 2023)
+
+
+Compilado con la versión wxMaxima 22.04.0.
+Fichero de instalación: maxima-5.46.0-win64.exe.
+Última modificación: 14 de abril de 2022.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+convert_base(n,b) 
+Función para obtener la expresión en base b del número natural n (sistema de numeración en base b). La función tiene dos argumentos.
+
+Primer argumento: el número natural n.
+Segundo argumento: la base b.
+
+Devuelve una lista con los dígitos de la expresión de n en base b.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+convert_base(n,b):=block(
+[result:[],l],
+    while n>=b do 
+        (
+        l:divide(n,b),
+        push(l[2],result),
+        n:l[1] 
+        ),
+    push(n,result),
+    result
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+peso(palabra) 
+Función para calcular el peso de una palabra (vector). La función tiene un argumento.
+
+Argumento: una lista con las coordenadas de la palabra.
+
+Devuelve el número de coordenadas no nulas de la palabra.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+peso(palabra):=block(
+    [w:0],
+    for i in palabra do if i # 0 then w:w+1,
+    w
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+peso([1,1,1,0,0]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+peso([3,2,0,1,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+tablero_sindromes(H,d,p) 
+Función que calcula el tablero de síndromes incompleto de un código lineal sobre F_p con matriz de control H y distancia de Hamming d. La función tiene tres argumentos.
+
+Primer argumento: una matriz de control del código.
+Segundo argumento: la distancia de Hamming del código.
+Tercer argumento: el número primo que marca el módulo.
+
+Devuelve una lista de listas. En cada una de ellas dos datos: el primero un error patrón (en formato lista) y el segundo su síndrome (en formato matriz).
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tablero_sindromes(H,d,p):=block( 
+[n,t,tablero:[],aux,ceros,extra],
+n:length(H[1]),
+t:floor((d-1)/2),
+tablero:[],
+    for i:0 thru p^n-1 do
+    ( 
+    aux:convert_base(i,p),  
+    if peso(aux)<=t then 
+      (
+        ceros:n-length(aux),
+        if ceros # 0 then for j:1 thru ceros do push(0,aux),
+        extra:[[aux,mod(H.aux,p)]], 
+        tablero:append(tablero,extra)
+      )
+    ),
+tablero
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+H:matrix([1,0,0,1,1,0,1],[0,1,0,1,0,1,1],[0,0,1,0,1,1,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tablero_sindromes(H,3,2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+DATOS DEL PROBLEMA
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+batchload("entrada_datos_05.txt") $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sprint(alf) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p:2 $
+d:5 $
+r:matrix_size(A)[2]$
+H:mat_unblocker(mod(matrix([-transpose(A),ident(r)]),p));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+table:tablero_sindromes(H,d,p)$
+n:length(H[1]);
+k:n-length(H); /*K = filas G*/
+d;
+p;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+division:divide(length(L), n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+corrector(division, table, L, n, H, k,p):=block(
+    [decoded:[], corrected:[], aux:[], y:[]],
+    
+    y:makelist(L[i], i, 1, n),
+            corrected:[],
+            sindrome:mod(H.y,p),
+            for data in table do
+                    (
+                    if is(data[2]=sindrome) then (corrected:mod(y-data[1], p), break)
+                    ),
+            aux:makelist(corrected[i], i, 1, k),
+            decoded:append(decoded, aux),
+                
+    for j:1 thru division[1]-1 do
+        (
+            y:makelist(L[i], i, j*n+1, j*n+n),
+            
+            corrected:[],
+            sindrome:mod(H.y,p),
+            for data in table do
+                    (
+                    if is(data[2]=sindrome) then (corrected:mod(y-data[1], p),break)
+                    ),
+                aux:makelist(corrected[i], i, 1, k),
+       
+                decoded:append(decoded, aux)
+                
+        ),
+    decoded:append(decoded,makelist(L[i], i, division[1]*n+1, division[1]*n+division[2])),
+    decoded
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+code_2:corrector(division, table, L, n, H, k,p)$
+ceiling(log(slength(alf)/log(p)));
+mod(length(code_2),5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alphabetDecode(L, alf, p):=block(
+    [msg:[], aux, N, min_long, alfPos, R],
+    aux:1,
+    N:slength(alf),
+    alfPos:0,
+    min_long:ceiling(log(N)/log(p)),
+    R:divide(length(L),min_long),
+    for i:1 thru length(L) do
+        (   
+                alfPos:alfPos +(L[i]*p^(min_long-aux)),            
+                if aux = min_long then (
+                    /*print(charat(alf,posAlf+1)),*/
+                    msg:endcons(charat(alf,alfPos+1), msg),
+                    aux:0,
+                    alfPos:0
+                ), 
+                aux:aux+1
+        ),
+    msg
+    )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+decoed:alphabetDecode(code_2, alf, p);
+simplode(%);
+sprint(%) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

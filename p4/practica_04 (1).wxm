@@ -22,9 +22,14 @@ batchload("entrada_datos_04.txt") $
 
 
 /* [wxMaxima: input   start ] */
-A: matrix([1, 2, 0, 1, 2, 1, 2],
-          [0, 1, 2, 0, 1, 2, 1],
-          [1, 1, 1, 1, 1, 1, 0]);
+sprint(alf) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:matrix([1,2,0,1,2,1],
+[0,1,2,0,1,2],
+[1,1,1,1,1,1]);
 /* [wxMaxima: input   end   ] */
 
 
@@ -45,7 +50,7 @@ L;
 
 
 /* [wxMaxima: input   start ] */
-linearDecode(L, n, k):=block(
+decoLineal(L, n, k):=block(
     [sec:[], cola, aux],
     aux:1,
     for i:1 thru length(L) do
@@ -65,18 +70,17 @@ linearDecode(L, n, k):=block(
 
 
 /* [wxMaxima: input   start ] */
-code_1: linearDecode(L, 9, 3);
+codi_1:decoLineal(L, 9, 3);
 /* [wxMaxima: input   end   ] */
 
 
 /* [wxMaxima: input   start ] */
-mod(length(code_1), 4);
-
+mod(length(codi_1),4);
 /* [wxMaxima: input   end   ] */
 
 
 /* [wxMaxima: input   start ] */
-decodeAlphabet(L, alf, p):=block(
+decoAlf(L, alf, p):=block(
     [msj:[], aux, N, min_long, posAlf, R],
     aux:1,
     posAlf:1,
@@ -95,26 +99,17 @@ decodeAlphabet(L, alf, p):=block(
         ),
     msj
     )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
 
 /* [wxMaxima: input   end   ] */
 
 
 /* [wxMaxima: input   start ] */
 slength(alf);
-solution: decodeAlphabet(code_1, alf, p);
-
-
-/* [wxMaxima: input   end   ] */
-
-
-/* [wxMaxima: input   start ] */
-simplode(solution);
-
-/* [wxMaxima: input   end   ] */
-
-
-/* [wxMaxima: input   start ] */
-print(%);
+decoAlf(codi_1, alf, p);
 
 /* [wxMaxima: input   end   ] */
 
